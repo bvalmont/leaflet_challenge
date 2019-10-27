@@ -60,21 +60,53 @@ d3.json(usgs, function(data) {
 		    }).bindPopup(features[i].properties.place + '<br></br>' + features[i].properties.mag + " on Richter scale").addTo(myMap);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-     }
+    }
     
+
+   
+
+  
+    
+   
+   
+   
+    function getColor (d) {
+        return d > 5 ? '#ff4800' :
+                d > 4 ? '#ff8400' :
+                d > 3 ? '#ffaa00' :
+                d > 2 ? '#ffe100' :
+                d > 1 ? '#d0ff00' :
+                d > 0 ? '#99ff00':
+                '#9dff00';
+     }
+
+    //Adding the Legend to the Map
+var legend = L.control({position: 'bottomright'});
+legend.onAdd = function (myMap) {
+   var div = L.DomUtil.create('div', 'info legend'),
+       grades = [0,1,2,3,4,5],
+       labels = [];
+   // loop through our density intervals and generate a label with a colored square for each interval
+    for (var i = 0; i < grades.length; i++) {
+        div.innerHTML +=
+            '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
+            grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
+    }
+    return div;
+};
+legend.addTo(myMap);
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
