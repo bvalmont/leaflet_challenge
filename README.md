@@ -9,3 +9,6 @@ When clicked, each marker contains a popup that gives detail on where the earthq
 
 # Map Preview
 ![](images/earthquake.PNG)
+
+# Directions
+Use a local server to run the html and view the earthquake locations and magnitudes.
